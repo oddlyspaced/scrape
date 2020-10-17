@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 def load_items(page_number):
     URL = "https://www.amazon.in/s?k=oneplus+buds&page="+str(page_number)
     headers = ({'User-Agent':
@@ -19,13 +18,10 @@ def load_items(page_number):
     item_prices = []
 
     div_elements = soup.find_all("div", {"class": "s-main-slot s-result-list s-search-results sg-row"})
-    print(len(div_elements))
 
     if (len(div_elements) == 0):
         return False
-
     search = div_elements[0].find_all("div", {"class" : "sg-col-20-of-24 s-result-item s-asin sg-col-0-of-12 sg-col-28-of-32 sg-col-16-of-20 sg-col sg-col-32-of-36 sg-col-12-of-16 sg-col-24-of-28"})
-    print(len(search))
 
     for elem in search :
         name = elem.find_all("span", {"class" : "a-size-medium a-color-base a-text-normal"})
