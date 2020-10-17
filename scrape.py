@@ -16,6 +16,7 @@ def load_items(page_number):
 
     item_names = []
     item_prices = []
+    item_ratings = []
 
     div_elements = soup.find_all("div", {"class": "s-main-slot s-result-list s-search-results sg-row"})
 
@@ -26,16 +27,19 @@ def load_items(page_number):
     for elem in search :
         name = elem.find_all("span", {"class" : "a-size-medium a-color-base a-text-normal"})
         price = elem.find_all("span", {"class" : "a-price-whole"})
+        rating = elem.find_all("span", {"class" : "a-icon-alt"})
         try :
             n = name[0].text
             p = price[0].text
+            r = rating[0].text
             item_names.append(n)
             item_prices.append(p)
+            item_ratings.append(r)
         except:
             continue
 
     for i in range(0,len(item_names)):
-        print(item_names[i], item_prices[i])
+        print(item_names[i], item_prices[i], item_ratings[i])
         print()
     return True
 
