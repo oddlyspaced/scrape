@@ -30,8 +30,13 @@ def load_items(page_number):
     for elem in search :
         name = elem.find_all("span", {"class" : "a-size-medium a-color-base a-text-normal"})
         price = elem.find_all("span", {"class" : "a-price-whole"})
-        item_names.append(name[0].text)    
-        item_prices.append(price[0].text)
+        try :
+            n = name[0].text
+            p = price[0].text
+            item_names.append(n)
+            item_prices.append(p)
+        except:
+            continue
 
     for i in range(0,len(item_names)):
         print(item_names[i], item_prices[i])
