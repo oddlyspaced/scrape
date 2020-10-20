@@ -95,5 +95,6 @@ def load_items_new(page_number):
 page = 1
 while True:
     input("Press enter to load next page")
-    if load_items_new(page):
+    print(load_items(page))
+    if load_items(page):
         page += 1
